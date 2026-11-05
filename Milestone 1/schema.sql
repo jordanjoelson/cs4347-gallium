@@ -1,0 +1,44 @@
+-- CS 4347 - Team Gallium
+CREATE TABLE BOOK (
+    Isbn VARCHAR(10) PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE AUTHORS (
+    Author_id INT PRIMARY KEY,
+    Author VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE BOOK_AUTHORS (
+    Isbn VARCHAR(10),
+    Author_id INT,
+    PRIMARY KEY (Author_id, Isbn),
+    FOREIGN KEY (Author_id) REFERENCES AUTHORS(Author_id),
+    FOREIGN KEY (Isbn) REFERENCES BOOK(Isbn)
+);
+
+CREATE TABLE BORROWER (
+    Card_id INT PRIMARY KEY,
+    Ssn VARCHAR(11) NOT NULL,
+    Bname VARCHAR(255) NOT NULL,
+    Address VARCHAR(255),
+    Phone VARCHAR(20)
+);
+
+CREATE TABLE BOOK_LOANS (
+    Loan_id INT PRIMARY KEY,
+    Isbn VARCHAR(10),
+    Card_id INT,
+    Date_out DATE,
+    Due_date DATE,
+    Date_in DATE,
+    FOREIGN KEY (Isbn) REFERENCES BOOK(Isbn),
+    FOREIGN KEY (Card_id) REFERENCES BORROWER(Card_id)
+);
+
+CREATE TABLE FINES (
+    Loan_id INT PRIMARY KEY,
+    Fine_amt DECIMAL(10,2),
+    Paid BOOLEAN,
+    FOREIGN KEY (Loan_id) REFERENCES BOOK_LOANS(Loan_id)
+);
