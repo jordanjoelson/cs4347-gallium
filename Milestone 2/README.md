@@ -21,25 +21,34 @@ No database server needs to be installed. SQLite stores the whole database in a 
 
 | File | Purpose |
 |---|---|
-| `schema.sql` | DDL that creates the six tables, with their primary keys, foreign keys, and constraints |
-| `build_db.py` | Creates `library.db` from `schema.sql` and loads the CSV data into the tables |
+| `books-1.csv` | Original book data provided for the project (not normalized) |
+| `borrowers_ORIGINAL.csv` | Original borrower data provided for the project (not normalized) |
+| `normalize.py` | Normalizes the original data into 3NF and writes the four CSV files below |
 | `books.csv` | Data for the `BOOK` table |
 | `authors.csv` | Data for the `AUTHORS` table |
 | `book_authors.csv` | Data for the `BOOK_AUTHORS` table (links books to authors, many-to-many) |
 | `borrowers.csv` | Data for the `BORROWER` table |
+| `schema.sql` | DDL that creates the six tables, with their primary keys, foreign keys, and constraints |
+| `build_db.py` | Creates `library.db` from `schema.sql` and loads the CSV data into the tables |
 
-The four CSV files are the normalized (3NF) output from Milestone 1.
+The normalized CSV files are already included, so running `normalize.py` is optional.
 
 ## How to Build the Database
 
 1. Open a terminal in this folder.
-2. Run:
+2. (Optional) Regenerate the normalized CSV files from the original data:
+
+   ```
+   python normalize.py
+   ```
+
+3. Create and load the database:
 
    ```
    python build_db.py
    ```
 
-3. You should see: `SQL Database successfully built and populated!`
+4. You should see: `SQL Database successfully built and populated!`
 
 This creates `library.db` in the same folder. Running the script again deletes the old `library.db` and builds a fresh copy, so it is always safe to rerun.
 
