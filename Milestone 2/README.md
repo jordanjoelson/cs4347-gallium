@@ -20,14 +20,6 @@ python build_db.py
 
 This creates `library.db`, a SQLite database file, from `schema.sql` and loads the normalized CSV data. It is safe to rerun; each run builds a fresh copy.
 
-To verify that everything works:
-
-```
-python test_library.py
-```
-
-This should print `All tests passed.` The tests use a temporary copy of the database, so `library.db` is not changed.
-
 ## Project Structure
 
 | File | Purpose |
@@ -40,7 +32,6 @@ This should print `All tests passed.` The tests use a temporary copy of the data
 | `loans.py` | Checking books out and in: `checkout`, `find_loans`, `checkin` |
 | `borrowers.py` | Borrower management: `create_borrower` |
 | `fines.py` | Fines: `refresh_fines`, `show_fines`, `pay_fines` |
-| `test_library.py` | Tests every function and business rule |
 
 Each function raises a `ValueError` with a clear message when a request breaks a rule, such as checking out a book that is already out. Functions that change data run as a single transaction.
 
