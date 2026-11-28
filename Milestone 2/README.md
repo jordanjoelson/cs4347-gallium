@@ -26,14 +26,14 @@ Open a terminal in this folder and run:
 
 ## Menu
 
-1. Search books
-2. Check out a book
-3. Find and check in loans
-4. Create a borrower
-5. Refresh fines
-6. Show fines
-7. Pay fines
-0. Quit
+    1) Search books
+    2) Check out a book
+    3) Find and check in loans
+    4) Create a borrower
+    5) Refresh fines
+    6) Show fines
+    7) Pay fines
+    0) Quit
 
 ## Fines demo
 
